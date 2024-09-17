@@ -5,6 +5,10 @@
       }
     },
     "routes": [
-      { "src": "/(.*)",  "dest": "/api/index.php" }
-    ]
+      { "src": "/(.*)", "dest": "/api/index.php" }
+    ],
+    "build": {
+      "installCommand": "apt-get update && apt-get install -y libssl-dev"
+    }
   }
+  
