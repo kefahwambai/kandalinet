@@ -50,9 +50,9 @@ class MikrotikPppoe
                 $setRequest->setArgument('name', $customer['username']);
             }
             if (!empty($customer['pppoe_ip'])) {
-                $setRequest->setArgument('local-address', $customer['pppoe_ip']);
+                $setRequest->setArgument('remote-address', $customer['pppoe_ip']);
             }else{
-                $setRequest->setArgument('local-address', '0.0.0.0');
+                $setRequest->setArgument('remote-address', '0.0.0.0');
             }
             $setRequest->setArgument('profile', $plan['name_plan']);
             $setRequest->setArgument('comment', $customer['fullname'] . ' | ' . $customer['email'] . ' | ' . implode(', ', User::getBillNames($customer['id'])));
@@ -338,7 +338,7 @@ class MikrotikPppoe
             $setRequest->setArgument('name', $customer['username']);
         }
         if (!empty($customer['pppoe_ip'])) {
-            $setRequest->setArgument('local-address', $customer['pppoe_ip']);
+            $setRequest->setArgument('remote-address', $customer['pppoe_ip']);
         }
         $client->sendSync($setRequest);
     }
